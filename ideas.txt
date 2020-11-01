@@ -1,0 +1,4 @@
+Plot Ideas
+
+1. Main goal: Player is in jail and grants immunity to player if he can successfully complete a task for him. If player wins, free to walk away and live their own lives. If loss, then either death by beast or by the executioner
+

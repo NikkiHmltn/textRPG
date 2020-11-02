@@ -1,0 +1,59 @@
+.container {
+    border: 2px solid black;
+    position: fixed;
+    top: 10%;
+    left: 20%;
+    height: 600px;
+    width: 800px;
+}
+
+.game-area {
+    border: 2px solid black;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    height: 300px;
+}
+.bottom-area {
+    display: flex;
+}
+
+.player-info {
+    border: 2px solid black;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 300px;
+    
+}
+
+.inventory-space {
+    border: 2px solid black;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+    height: 200px;
+    width: 440px;
+    display: flex;
+    flex-flow: row wrap;
+    
+}
+
+.item {
+    border: 1px solid black;
+    margin: 15px;
+    padding: 5px; 
+    height: 25px;
+    width: 25px;
+}    
+
+.game-area {
+    text-align: center;
+}
+
+#instructions {
+    position: absolute;
+    bottom: 30px;;
+    left: 15px;
+}

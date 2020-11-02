@@ -13,6 +13,10 @@
     margin: 10px;
     padding: 10px;
     height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 .bottom-area {
     display: flex;
@@ -25,7 +29,6 @@
     padding: 10px;
     height: 200px;
     width: 300px;
-    
 }
 
 .inventory-space {
@@ -37,6 +40,7 @@
     width: 440px;
     display: flex;
     flex-flow: row wrap;
+    align-items: center;
     
 }
 
@@ -56,4 +60,10 @@
     position: absolute;
     bottom: 30px;;
     left: 15px;
+}
+
+#start-game {
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
 }

@@ -4,7 +4,7 @@ let gameArea = document.querySelector(".game-area");
 let playerDisplay = document.querySelector(".player-info");
 
 
-
+// only one class for now, default class
 let fighterClass = {
     health: 80,
     strength: 3,
@@ -23,8 +23,11 @@ let player = {
     health: fighterClass.health,
     strength: fighterClass.strength,
     stamina: 40,
+    gold: 0,
     weight: 85
 }
+
+
 
 // //on click it displays instructions
 const displayInstructions = () => {
@@ -33,8 +36,23 @@ const displayInstructions = () => {
 
 //on click it starts the game
 const startGame = () => {
-    console.log('in here')
+    
     gameArea.textContent = 'Starting text goes here this is simply just a test'
+
+    playerDisplay.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold} \n Weight: ${player.weight}`;
+
+    playerDisplay.style.textAlign = "right";
+
+    //creates a reset button once start game has been clicked
+    let resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset'
+    resetBtn.id = 'reset-btn'
+    playerDisplay.appendChild(resetBtn);
+    
 }
-instructions.addEventListener('click', displayInstructions());
-startButton.addEventListener('click', startGame());
+instructions.addEventListener('click', displayInstructions);
+startButton.addEventListener('click', startGame);
+
+
+
+

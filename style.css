@@ -20,6 +20,8 @@
 }
 .bottom-area {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .player-info {
@@ -66,4 +68,10 @@
     position: absolute;
     bottom: 30px;
     left: 100px;
+}
+
+#reset-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 140px;
 }

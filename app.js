@@ -3,7 +3,8 @@ let startButton = document.querySelector('#start-game');
 let gameArea = document.querySelector(".game-area");
 let playerDisplay = document.querySelector(".player-info");
 let buttonArea = document.querySelector(".button-container");
-console.log(buttonArea);
+let infoArea = document.querySelector(".info-container")
+
 
 
 // only one class for now, default class
@@ -42,7 +43,7 @@ const displayInstructions = () => {
 //on click it starts the game
 const startGame = () => {
     
-    gameArea.textContent = `You wake up in a dank and dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
+    infoArea.textContent = `You wake up in a musty, dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
 
     let noBtn = document.createElement('button')
     noBtn.textContent = "I'm fine sitting here until I die";
@@ -54,17 +55,17 @@ const startGame = () => {
     yesBtn.id = "yes-btn";
     buttonArea.appendChild(yesBtn);
 
-    console.log(yesBtn)
-    console.log(noBtn)
+    let clicked = false;
+    yesBtn.addEventListener('click', function(){
+        clicked = true;
+        scenario1();
+    });
+    noBtn.addEventListener('click', function(){
+        clicked = true;
+        gameOver1();
+    });
 
-    if(yesBtn.clicked == true) {
-        scerario1()
-    }
-    if(noBtn.clicked == true) {
-        gameOver1()
-    }
-
-    playerDisplay.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold} \n Weight: ${player.weight}`;
+    playerDisplay.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
 
     playerDisplay.style.textAlign = "right";
 
@@ -73,10 +74,13 @@ const startGame = () => {
     resetBtn.textContent = 'Reset'
     resetBtn.id = 'reset-btn'
     playerDisplay.appendChild(resetBtn);
-    if (document.getElementById('reset-btn').clicked == true) {
-    (gameArea.textContent = ' ');
+    resetBtn.addEventListener('click', function(){
+        clicked = true;
+        gameArea.textContent = " ";
+        
+    })
 };
-}
+
 instructions.addEventListener('click', displayInstructions);
 startButton.addEventListener('click', startGame);
 

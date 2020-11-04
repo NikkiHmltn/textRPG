@@ -78,6 +78,7 @@
 
 .button-container {
     position: absolute;
-    bottom: 30px;
-
+    top: 290px;
+    padding: 10px;
+    
 }

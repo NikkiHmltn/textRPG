@@ -26,20 +26,23 @@ let player = {
     strength: fighterClass.strength,
     stamina: 40,
     gold: 0,
-    weight: 85
 }
 
 
+//fight mechanics go here
+//maybe randomize a number, probably between 1 and strength max, multiplied by 2 in order to deal attacks on health
+//transfer gold to character upon creature death
+//check to make sure when health is at 0, death occurs for monster or player
 
 // //on click it displays instructions
 const displayInstructions = () => {
-    gameArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block!' 
+    gameArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press Start Game to begin your journey.' 
 }
 
 //on click it starts the game
 const startGame = () => {
     
-    gameArea.textContent = `You wake up in a dank and dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you accept?" Well, do you accept?`
+    gameArea.textContent = `You wake up in a dank and dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
 
     let noBtn = document.createElement('button')
     noBtn.textContent = "I'm fine sitting here until I die";

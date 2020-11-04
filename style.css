@@ -62,18 +62,21 @@
     position: absolute;
     bottom: 30px;;
     left: 15px;
+    display: block;
 }
 
 #start-game {
     position: absolute;
     bottom: 30px;
     left: 100px;
+    display: block;
 }
 
 #reset-btn {
     position: absolute;
     bottom: 30px;
     left: 140px;
+    display: block;
 }
 
 .button-container {

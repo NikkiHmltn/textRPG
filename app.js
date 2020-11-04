@@ -27,10 +27,28 @@ let player = {
     strength: fighterClass.strength,
     stamina: 40,
     gold: 0,
+    checkHealth() {
+        if (player.health <= 0) {
+            gameOver1();
+        } 
+    }
 }
 
 
 //fight mechanics go here
+function pickMonster() {
+    randomMonster = monster[Math.floor(Math.random() * monster.length)]
+    console.log(randomMonster);
+}
+
+function fightTime() {
+    
+    let playerAttack = Math.floor((Math.random() * player.strength) + 1);
+    let enemyAttack = Math.floor((Math.random() * randomMonster.strength) +1);
+    console.log(enemyAttack);
+}
+fightTime(pickMonster())
+
 //maybe randomize a number, probably between 1 and strength max, multiplied by 2 in order to deal attacks on health
 //transfer gold to character upon creature death
 //check to make sure when health is at 0, death occurs for monster or player

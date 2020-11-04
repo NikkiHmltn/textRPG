@@ -75,3 +75,9 @@
     bottom: 30px;
     left: 140px;
 }
+
+.button-container {
+    position: absolute;
+    bottom: 30px;
+
+}

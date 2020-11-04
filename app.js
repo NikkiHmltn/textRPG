@@ -3,6 +3,7 @@ let startButton = document.querySelector('#start-game');
 let gameArea = document.querySelector(".game-area");
 let playerDisplay = document.querySelector(".player-info");
 let buttonArea = document.querySelector(".button-container");
+console.log(buttonArea);
 
 
 // only one class for now, default class
@@ -49,6 +50,9 @@ const startGame = () => {
     yesBtn.textContent = "Whats the worst that can happen?"
     yesBtn.id = "yes-btn";
     buttonArea.appendChild(yesBtn);
+
+    console.log(yesBtn)
+    console.log(noBtn)
 
     if(yesBtn.clicked == true) {
         scerario1()

@@ -15,13 +15,13 @@ function scenario1 () {
     buttonArea.appendChild(adventureBtn)
 
     adventureBtn.addEventListener('click', function() {
-        scenario2();
+        scenario2(pickMonster());
     })
 
 };
 
 function scenario2() {
-    infoArea.textContent = "test for scenario 2"
+    infoArea.textContent = `As you venture further away from the township, you come to a standstill at a crossroads. Several paths appear before you, but there is no markings of where you are or where they lead. As you ponder your next move, a voice comes up behind you. \n "${currentMonster.text}" \n They don't look like they want to have a friendly chat. Draw your sword!`
 
     let btns = document.querySelector('.button-container').children;
     
@@ -34,11 +34,21 @@ function scenario2() {
     battleBtn.textContent = 'Fight!'
     buttonArea.appendChild(battleBtn)
 
+    battleBtn.addEventListener('click', function(){
+        fightTime(currentMonster);
+    })
+
 
 }
+
+
 
 //These functions are lose conditions written into the story
 
 function gameOver1 () {
     infoArea.textContent = "You felt more content to sit and wait for your oncoming execution. The king is disappointed in your choice, but you'd never give the bourgeois the satisfaction. You only pray the headsman's axe gives you a clean cut the first time round. \n GAME OVER";
+}
+
+function fallenInBattle () {
+    infoArea.textContent = `With a final cackle from the creature, you fall to the ground. Outdone by a ${currentMonster.name}... \n GAME OVER`
 }

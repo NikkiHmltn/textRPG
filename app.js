@@ -39,21 +39,49 @@ let player = {
 
 //fight mechanics go here
 function pickMonster() {
-    randomMonster = monster[Math.floor(Math.random() * monster.length)]
-    return randomMonster
+    currentMonster = monster[Math.floor(Math.random() * monster.length)]
+    return currentMonster
 }
 
 function fightTime() {
     
-    let playerAttack = Math.floor((Math.random() * player.strength) + 1);
-    let enemyAttack = Math.floor((Math.random() * randomMonster.strength) +1);
-    console.log(enemyAttack);
-}
-fightTime(pickMonster())
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
 
-//maybe randomize a number, probably between 1 and strength max, multiplied by 2 in order to deal attacks on health
-//transfer gold to character upon creature death
-//check to make sure when health is at 0, death occurs for monster or player
+    let attackBtn = document.createElement('button')
+    attackBtn.textContent = "Attack";
+    attackBtn.id = "attack-btn";
+    buttonArea.appendChild(attackBtn);
+    //maybe randomize a number, probably between 1 and strength max, multiplied by 2 in order to deal attacks on health
+    let playerAttack = Math.floor((Math.random() * player.strength) + 1);
+    let enemyAttack = Math.floor((Math.random() * currentMonster.strength) +1);
+    let playerHealth = player.health
+    let enemyHealth = monster.health
+
+    attackBtn.addEventListener('click', function() {
+        enemyHealth -= playerAttack,
+        playerHealth -= enemyAttack,
+        infoArea.textContent = `You hit the creature for ${playerAttack} damange! \n The creature hits you for ${enemyAttack} damange.`
+        //check to make sure when health is at 0, death occurs for monster or player
+        if (enemyHealth <= 0) {
+            infoArea.textContent = `With a final slice of your sword, you fell your enemy. \n You pick up ${currentMonster.gold} gold.`
+            //transfer gold to character upon creature death
+            currentMonster.gold += player.gold;
+        }
+        if (player.health <= 0) {
+            fallenInBattle();
+        }
+    })
+
+
+}
+
+
+
+
 
 // //on click it displays instructions
 const displayInstructions = () => {
@@ -97,7 +125,7 @@ const startGame = () => {
     resetBtn.addEventListener('click', function(){
         infoArea.textContent = " ";
         buttonArea.textContent = " ";
-    
+    //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')
         }
@@ -105,13 +133,12 @@ const startGame = () => {
             (resetBtn.style.display = 'none')
         }
         
-        //remove hidden properties
+        
     })
 };
 
-//give these buttons a hidden class
+
 instructions.addEventListener('click', displayInstructions);
-//hide start on click and reveal reset button
 startButton.addEventListener('click', startGame)
 
 

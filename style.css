@@ -85,3 +85,15 @@
     padding: 10px;
     
 }
+
+#swamp-btn {
+    display: none;
+}
+
+#desert-btn {
+    display: none;
+}
+
+#mountain-btn {
+    display: none;
+}

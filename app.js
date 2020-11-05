@@ -89,6 +89,10 @@ function fightTime() {
 
 }
 
+    let discoverSwamp = -1;
+    let discoverDesert = -1;
+    let discoverMountain = -1;
+
 function explore() {
 
     infoArea.textContent = `You arrive back at the crossroads. You see a few paths before you. Why don't you try to take a look around to see what you can find?`
@@ -106,27 +110,22 @@ function explore() {
     let swampBtn = document.createElement('button')
     swampBtn.textContent = "Swamp";
     swampBtn.id = "swamp-btn";
-    swampBtn.style.display= 'none'
     buttonArea.appendChild(swampBtn);
     let desertBtn = document.createElement('button')
     desertBtn.textContent = "Desert";
     desertBtn.id = "desert-btn";
-    desertBtn.style.display= 'none'
     buttonArea.appendChild(desertBtn);
     let mountainBtn = document.createElement('button')
     mountainBtn.textContent = "Mountain";
     mountainBtn.id = "mountain-btn";
-    mountainBtn.style.display = 'none'
     buttonArea.appendChild(mountainBtn);
-
-    let discoverSwamp = -1;
-    let discoverDesert = -1;
-    let discoverMountain = -1;
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
         console.log(exploreNum)
-        debugger
+        console.log(discoverSwamp)
+        console.log(discoverDesert)
+        console.log(discoverMountain)
         if (exploreNum <= 20 && discoverSwamp === -1) {
             (swampBtn.style.display = 'block',
             infoArea.textContent = `You discovered the swamp!`,

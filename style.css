@@ -88,12 +88,21 @@
 
 #swamp-btn {
     display: none;
+    position: absolute;
+    left: 255px;
+    bottom: 10px;
 }
 
 #desert-btn {
     display: none;
+    position: absolute;
+    left: 190px;
+    bottom: 10px;
 }
 
 #mountain-btn {
     display: none;
+    position: absolute;
+    left: 110px;
+    bottom: 10px;
 }

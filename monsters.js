@@ -3,7 +3,7 @@ let monster = [
     {
         id: 01,
         name: "Wayword Doggo",
-        health: 40,
+        health: 1,
         strength: 1,
         gold: 5,
         text: "Bork! Bork! Bork!"
@@ -12,7 +12,7 @@ let monster = [
     {
         id: 02,
         name: "Used Caravan Salesman",
-        health: 45,
+        health: 1,
         strength: 2,
         gold: 10,
         text: "You can fit so many goblins in this caravan, baby!"
@@ -21,7 +21,7 @@ let monster = [
     {
         id: 03,
         name: "Karen",
-        health: 70,
+        health: 1,
         strength: 4,
         gold: 20,
         text: "I want to speak with your supervisor!"
@@ -29,3 +29,16 @@ let monster = [
 
 
 ]
+
+class Monster {
+    constructor (info) {
+        this.id = info.id
+        this.name = info.name
+        this.health = info.health
+        this.strength = info.strength
+        this.gold = info.gold
+        this.text = info.text
+    }
+}
+
+//make a class for generic monster, plug in monster info on new Monster

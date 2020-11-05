@@ -37,10 +37,21 @@ let player = {
     }
 }
 
+class Reset {
+    constructor(player) {
+        this.name = player.name
+        this.health = player.health
+        this.strength = player.strength
+        this.stamina = player.stamina
+        this.gold = player.gold
+    }
+}
+
 //fight mechanics go here
 function pickMonster() {
-    currentMonster = monster[Math.floor(Math.random() * monster.length)]
-    return currentMonster
+    currentMonsterTemplate = monster[Math.floor(Math.random() * monster.length)]
+    
+    currentMonster = new Monster(currentMonsterTemplate)
 }
 
 function fightTime() {
@@ -120,38 +131,55 @@ function explore() {
     mountainBtn.id = "mountain-btn";
     buttonArea.appendChild(mountainBtn);
 
+    if(discoverSwamp === 1) {
+        swampBtn.style.display = 'block'
+    }
+    if(discoverDesert === 1) {
+        desertBtn.style.display = 'block'
+    }
+    if(discoverMountain === 1) {
+        mountainBtn.style.display = 'block'
+    }
+
+
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
         console.log(exploreNum)
-        console.log(discoverSwamp)
-        console.log(discoverDesert)
-        console.log(discoverMountain)
+        console.log(discoverSwamp, 'swamp')
+        console.log(discoverDesert, 'desert')
+        console.log(discoverMountain, 'mountain')
+
         if (exploreNum <= 20 && discoverSwamp === -1) {
-            (swampBtn.style.display = 'block',
-            infoArea.textContent = `You discovered the swamp!`,
-            discoverSwamp + 1)
-            } else if (discoverSwamp === 0) {
-            fightTime(pickMonster())
+            swampBtn.style.display = 'block'
+            infoArea.textContent = `You discovered the swamp!`
+            discoverSwamp = 1
+            } else if (discoverSwamp === 1) {
+            pickMonster()
+            fightTime()
             }
         if (21 <= exploreNum && exploreNum <= 40 && discoverDesert === -1) {
-            (desertBtn.style.display = 'block',
-            infoArea.textContent = `You discovered the desert!`,
-            discoverDesert + 1)
-            } else if (discoverDesert === 0){
-            fightTime(pickMonster())
+            desertBtn.style.display = 'block'
+            infoArea.textContent = `You discovered the desert!`
+            discoverDesert = 1
+            } else if (discoverDesert === 1){
+            pickMonster()
+            fightTime()
             }
         if (41 <= exploreNum && exploreNum <= 60) {
-            fightTime(pickMonster())
+            pickMonster()
+            fightTime()
             }
         if (61 <= exploreNum && exploreNum <= 80 && discoverMountain === -1) {
-            (mountainBtn.style.display = 'block',
-            infoArea.textContent = ` You discovered the mountains!`,
-            discoverMountain + 1)
-            } else if (discoverMountain === 0){
-            fightTime(pickMonster())
+            mountainBtn.style.display = 'block'
+            infoArea.textContent = ` You discovered the mountains!`
+            discoverMountain = 1
+            } else if (discoverMountain === 1){
+            pickMonster()
+            fightTime()
             }
         if (81 <= exploreNum && exploreNum <=100){
-            fightTime(pickMonster())
+            pickMonster()
+            fightTime()
             }
     })
     swampBtn.addEventListener('click', function(){
@@ -208,7 +236,8 @@ const startGame = () => {
     resetBtn.addEventListener('click', function(){
         infoArea.textContent = " ";
         buttonArea.textContent = " ";
-        playerInfo.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
+        resetPlayer = new Reset(fighterClass);
+        console.log(resetPlayer)
     //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')
@@ -220,16 +249,17 @@ const startGame = () => {
         
     })
 };
+startButton.addEventListener('click', startGame);
+instructions.addEventListener('click', displayInstructions);
 
 function updatePlayerInfo() {
     playerInfo.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
 
     playerInfo.style.textAlign = "center";
 }
-setInterval(updatePlayerInfo, 1000 / 60),
+setInterval(updatePlayerInfo, 1000 / 60)
 
-instructions.addEventListener('click', displayInstructions);
-startButton.addEventListener('click', startGame)
+
 
 
 

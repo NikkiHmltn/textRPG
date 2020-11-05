@@ -43,8 +43,47 @@ function scenario2() {
 
 
 }
+//Functions for exploring!
 
+function exploreSwamp() {
+    infoArea.textContent = `This is definitely a swamp. Smells like a swamp. Looks like a swamp. You wonder if there are any ogres here.`
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
 
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Look Around";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+}
+
+function exploreDesert() {
+    infoArea.textContent = `A vast desert appears before you. Sand. It's coarse, and rough, and irritating, and it gets everywhere. Maybe if you look around, you'll find someone? Or you could just look silly wandering the desert alone. No one but the lizards may laugh at you. Beware their teeth.`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Look Around";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+}
+function exploreMountain() {
+    infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there.`
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Look Around";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+}
 
 //These functions are lose conditions written into the story
 

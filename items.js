@@ -16,3 +16,13 @@ let items = [
         description: "A chunk of refined emerald. It sparkles in the sunlight. Pretty useless for fighting. I wouldn't recommend eating it, either. Use it as a paperweight or maybe a shop will take it."
     }
 ]
+
+class Items {
+    constructor(info) {
+        this.id = info.id
+        this.name = info.name
+        this.price = info.price
+        this.image = info.image
+        this.description = info.description
+    }
+}

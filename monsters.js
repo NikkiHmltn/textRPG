@@ -21,8 +21,8 @@ let monster = [
     {
         id: 03,
         name: "Karen",
-        health: 80,
-        strength: 5,
+        health: 70,
+        strength: 4,
         gold: 20,
         text: "I want to speak with your supervisor!"
     }

@@ -18,6 +18,9 @@ function scenario1 () {
         scenario2(pickMonster());
     })
 
+    // let book = items.id[0]
+    // console.log(book)
+//     inventorySlot.appendChild(book);
 };
 
 function scenario2() {

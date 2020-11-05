@@ -5,9 +5,10 @@ let playerDisplay = document.querySelector(".player-info");
 let buttonArea = document.querySelector(".button-container");
 let infoArea = document.querySelector(".info-container")
 let playerInfo = document.querySelector(".player-display")
+let inventorySlot = document.querySelectorAll(".item")
 let currentMonster 
 
-
+//change player and fighterClass to a class
 // only one class for now, default class
 let fighterClass = {
     health: 80,
@@ -31,11 +32,10 @@ let player = {
     gold: 0,
     checkHealth() {
         if (player.health <= 0) {
-            gameOver1();
+            fallenInBattle();
         } 
     }
 }
-
 
 //fight mechanics go here
 function pickMonster() {
@@ -55,21 +55,32 @@ function fightTime() {
     attackBtn.textContent = "Attack";
     attackBtn.id = "attack-btn";
     buttonArea.appendChild(attackBtn);
-    //maybe randomize a number, probably between 1 and strength max, multiplied by 2 in order to deal attacks on health
-    let playerAttack = Math.floor((Math.random() * player.strength) + 1);
-    let enemyAttack = Math.floor((Math.random() * currentMonster.strength) +1);
-    let playerHealth = player.health
-    let enemyHealth = monster.health
 
     attackBtn.addEventListener('click', function() {
-        enemyHealth -= playerAttack,
-        playerHealth -= enemyAttack,
-        infoArea.textContent = `You hit the creature for ${playerAttack} damange! \n The creature hits you for ${enemyAttack} damange.`
+        let playerAttack = Math.floor((Math.random() * player.strength) + 3);
+        let enemyAttack = Math.floor((Math.random() * currentMonster.strength) +1);
+        console.log(currentMonster.health, player.health)
+        currentMonster.health -= playerAttack,
+        player.health -= enemyAttack,
+        infoArea.innerHTML = `You hit the creature for ${playerAttack} damage! <br> The creature hits you for ${enemyAttack} damage. <br> Creature: ${currentMonster.name} <br> Health: ${currentMonster.health}`
         //check to make sure when health is at 0, death occurs for monster or player
-        if (enemyHealth <= 0) {
-            infoArea.textContent = `With a final slice of your sword, you fell your enemy. \n You pick up ${currentMonster.gold} gold.`
+        if (currentMonster.health <= 0) {
+            infoArea.textContent = `With a final slice of your sword, you fell your enemy. \n You pick up ${currentMonster.gold} gold.`,
             //transfer gold to character upon creature death
-            currentMonster.gold += player.gold;
+            player.gold += currentMonster.gold;
+            let btns = document.querySelector('.button-container').children;
+    
+                while (btns.length) {
+                btns[0].remove();
+                }
+                let continueBtn = document.createElement('button')
+                continueBtn.textContent = "Back to the Crossroads";
+                continueBtn.id = "continue-btn";
+                buttonArea.appendChild(continueBtn);
+
+                continueBtn.addEventListener('click', function(){
+                    explore();
+                })
         }
         if (player.health <= 0) {
             fallenInBattle();
@@ -79,17 +90,89 @@ function fightTime() {
 
 }
 
+function explore() {
 
+    infoArea.textContent = `You arrive back at the crossroads. You see a few paths before. Why don't you try to take a look around to see what you can find?`
 
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+    debugger;
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Look Around";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+    //give swamp, desert, mountain display: none and reveal when randomly chosen
+    let swampBtn = document.createElement('button')
+    swampBtn.textContent = "Swamp";
+    swampBtn.id = "swamp-btn";
+    swampBtn.style.display= 'none'
+    buttonArea.appendChild(swampBtn);
+    let desertBtn = document.createElement('button')
+    desertBtn.textContent = "Desert";
+    desertBtn.id = "desert-btn";
+    desertBtn.style.display= 'none'
+    buttonArea.appendChild(desertBtn);
+    let mountainBtn = document.createElement('button')
+    mountainBtn.textContent = "Mountain";
+    mountainBtn.id = "mountain-btn";
+    mountainBtn.style.display = 'none'
+    buttonArea.appendChild(mountainBtn);
 
+    exploreBtn.addEventListener('click', function(){
+        let exploreNum = Math.floor((Math.random() * 100) + 1)
+        if (exploreNum <= 20 && discoverSwamp === -1) {
+            (swampBtn.style.display = 'block',
+            infoArea.textContent = `You discovered the swamp!`,
+            discoverSwamp + 1)
+            } else {
+            fightTime(pickMonster())
+            }
+             if (21 <= exploreNum <= 40 && discoverDesert === -1) {
+            (desertBtn.style.display = 'block',
+            infoArea.textContent = `You discovered the desert!`,
+            discoverDesert + 1)
+            } else {
+            fightTime(pickMonster())
+            }
+            if (41 <= exploreNum <= 60) {
+            fightTime(pickMonster())
+            }
+            if (61 <= exploreNum <= 80 && discoverMountain === -1) {
+            (mountainBtn.style.display = 'block',
+            infoArea.textContent = ` You discovered the mountains!`,
+            discoverMountain + 1)
+            } else {
+            fightTime(pickMonster())
+            }
+            if (81 <= exploreNum <=100){
+            fightTime(pickMonster())
+            }
+    })
+    swampBtn.addEventListener('click', function(){
+        exploreSwamp();
+    })
+    desertBtn.addEventListener('click', function(){
+        exploreDesert();
+    })
+    mountainBtn.addEventListener('click', function(){
+        exploreMountain();
+    })
+
+    let discoverSwamp = -1;
+    let discoverDesert = -1;
+    let discoverMountain = -1;
+
+    
+}
 
 // //on click it displays instructions
 const displayInstructions = () => {
     gameArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press Start Game to begin your journey.' 
 }
-playerInfo.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
 
-    playerInfo.style.textAlign = "right";
 
 
 //on click it starts the game
@@ -125,6 +208,7 @@ const startGame = () => {
     resetBtn.addEventListener('click', function(){
         infoArea.textContent = " ";
         buttonArea.textContent = " ";
+        playerInfo.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
     //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')
@@ -137,6 +221,12 @@ const startGame = () => {
     })
 };
 
+function updatePlayerInfo() {
+    playerInfo.innerText = `Name: ${player.name} \n Health: ${player.health}\n Strength: ${player.strength} \n Stamina: ${player.stamina} \n Gold: ${player.gold}`;
+
+    playerInfo.style.textAlign = "center";
+}
+setInterval(updatePlayerInfo, 1000 / 60),
 
 instructions.addEventListener('click', displayInstructions);
 startButton.addEventListener('click', startGame)

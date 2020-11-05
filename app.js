@@ -50,7 +50,7 @@ function fightTime() {
     while (btns.length) {
         btns[0].remove();
     }
-
+    infoArea.textContent = `You are ambused by a ${currentMonster.name}!`
     let attackBtn = document.createElement('button')
     attackBtn.textContent = "Attack";
     attackBtn.id = "attack-btn";
@@ -59,7 +59,6 @@ function fightTime() {
     attackBtn.addEventListener('click', function() {
         let playerAttack = Math.floor((Math.random() * player.strength) + 3);
         let enemyAttack = Math.floor((Math.random() * currentMonster.strength) +1);
-        console.log(currentMonster.health, player.health)
         currentMonster.health -= playerAttack,
         player.health -= enemyAttack,
         infoArea.innerHTML = `You hit the creature for ${playerAttack} damage! <br> The creature hits you for ${enemyAttack} damage. <br> Creature: ${currentMonster.name} <br> Health: ${currentMonster.health}`
@@ -92,14 +91,13 @@ function fightTime() {
 
 function explore() {
 
-    infoArea.textContent = `You arrive back at the crossroads. You see a few paths before. Why don't you try to take a look around to see what you can find?`
+    infoArea.textContent = `You arrive back at the crossroads. You see a few paths before you. Why don't you try to take a look around to see what you can find?`
 
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
         btns[0].remove();
     }
-    debugger;
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Look Around";
     exploreBtn.id = "explore-btn";
@@ -121,33 +119,39 @@ function explore() {
     mountainBtn.style.display = 'none'
     buttonArea.appendChild(mountainBtn);
 
+    let discoverSwamp = -1;
+    let discoverDesert = -1;
+    let discoverMountain = -1;
+
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
+        console.log(exploreNum)
+        debugger
         if (exploreNum <= 20 && discoverSwamp === -1) {
             (swampBtn.style.display = 'block',
             infoArea.textContent = `You discovered the swamp!`,
             discoverSwamp + 1)
-            } else {
+            } else if (discoverSwamp === 0) {
             fightTime(pickMonster())
             }
-             if (21 <= exploreNum <= 40 && discoverDesert === -1) {
+        if (21 <= exploreNum && exploreNum <= 40 && discoverDesert === -1) {
             (desertBtn.style.display = 'block',
             infoArea.textContent = `You discovered the desert!`,
             discoverDesert + 1)
-            } else {
+            } else if (discoverDesert === 0){
             fightTime(pickMonster())
             }
-            if (41 <= exploreNum <= 60) {
+        if (41 <= exploreNum && exploreNum <= 60) {
             fightTime(pickMonster())
             }
-            if (61 <= exploreNum <= 80 && discoverMountain === -1) {
+        if (61 <= exploreNum && exploreNum <= 80 && discoverMountain === -1) {
             (mountainBtn.style.display = 'block',
             infoArea.textContent = ` You discovered the mountains!`,
             discoverMountain + 1)
-            } else {
+            } else if (discoverMountain === 0){
             fightTime(pickMonster())
             }
-            if (81 <= exploreNum <=100){
+        if (81 <= exploreNum && exploreNum <=100){
             fightTime(pickMonster())
             }
     })
@@ -161,10 +165,7 @@ function explore() {
         exploreMountain();
     })
 
-    let discoverSwamp = -1;
-    let discoverDesert = -1;
-    let discoverMountain = -1;
-
+    
     
 }
 

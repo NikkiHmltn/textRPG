@@ -144,10 +144,6 @@ function explore() {
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
-        console.log(exploreNum)
-        console.log(discoverSwamp, 'swamp')
-        console.log(discoverDesert, 'desert')
-        console.log(discoverMountain, 'mountain')
 
         if (exploreNum <= 20 && discoverSwamp === -1) {
             swampBtn.style.display = 'block'

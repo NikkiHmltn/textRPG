@@ -5,22 +5,19 @@ let playerDisplay = document.querySelector(".player-info");
 let buttonArea = document.querySelector(".button-container");
 let infoArea = document.querySelector(".info-container")
 let playerInfo = document.querySelector(".player-display")
-let inventorySlot = document.querySelectorAll(".item")
+let inventorySpace = document.querySelector(".inventory-space")
+let inventorySlot = [];
 let currentMonster 
+let randomItem
 
+console.log(randomItem)
+console.log(currentMonster)
 //change player and fighterClass to a class
 // only one class for now, default class
 let fighterClass = {
     health: 80,
     strength: 3,
     stamina: 40,
-    ability: {
-        id: 0,
-        name: "Slice and Dice",
-        attack: 10,
-        staminaCost: 5,
-        text: 'Sching! You swing and deal 10 damage to the creature.'
-    }
 }
 
 //holds player info 
@@ -46,12 +43,58 @@ class Reset {
         this.gold = player.gold
     }
 }
+function itemIteration() {
+    
+    let refresh = document.querySelector('.inventory-space').children;
+    while (refresh.length) {
+    refresh[0].remove();
+    }
+    
+    for(let i = 0; i < inventorySlot.length; i++) {
+        let item = inventorySlot[i];
+        let itemPic = document.createElement('img')
+        itemPic.setAttribute('src', item.image)
+        itemPic.classList.add('item');
+        itemPic.setAttribute('title', `${item.description}`)
+        //grab the image then append it
+        inventorySpace.appendChild(itemPic)
+        
+    }
+}
 
+setInterval(itemIteration, 1000/60)
 //fight mechanics go here
 function pickMonster() {
     currentMonsterTemplate = monster[Math.floor(Math.random() * monster.length)]
     
     currentMonster = new Monster(currentMonsterTemplate)
+}
+
+function pickItem() {
+    currentItem = items[Math.floor(Math.random() * items.length)]
+
+    randomItem = new Items(currentItem)
+}
+
+function findItem() {
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    infoArea.textContent = `You found a ${randomItem.name}! It could be worth something to sell it.`
+    inventorySlot.push(randomItem);
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the Crossroads";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    continueBtn.addEventListener('click', function(){
+        explore();
+    })
+    
 }
 
 function fightTime() {
@@ -61,7 +104,7 @@ function fightTime() {
     while (btns.length) {
         btns[0].remove();
     }
-    infoArea.textContent = `You are ambused by a ${currentMonster.name}!`
+    infoArea.textContent = `You are ambushed by a ${currentMonster.name}!`
     let attackBtn = document.createElement('button')
     attackBtn.textContent = "Attack";
     attackBtn.id = "attack-btn";
@@ -144,7 +187,7 @@ function explore() {
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
-
+        console.log(exploreNum)
         if (exploreNum <= 20 && discoverSwamp === -1) {
             swampBtn.style.display = 'block'
             infoArea.textContent = `You discovered the swamp!`
@@ -174,8 +217,8 @@ function explore() {
             fightTime()
             }
         if (81 <= exploreNum && exploreNum <=100){
-            pickMonster()
-            fightTime()
+            pickItem()
+            findItem()
             }
     })
     swampBtn.addEventListener('click', function(){

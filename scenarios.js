@@ -18,9 +18,8 @@ function scenario1 () {
         scenario2(pickMonster());
     })
 
-    // let book = items.id[0]
-    // console.log(book)
-//     inventorySlot.appendChild(book);
+    let card = items[0]
+    inventorySlot.push(card)
 };
 
 function scenario2() {
@@ -206,8 +205,13 @@ function exploreDesert() {
             pickMonster();
             fightTime();
         }
-        if (exploreNum >= 34 && exploreNum <= 100) {
-            infoArea.textContent = `HEY DONT FORGET TO ADD RANDOM EVENTS AND FIX YOUR START AND INSTRUCTIONS BUTTON`
+        if (exploreNum >= 34 && exploreNum <= 60) {
+            pickItem()
+            findItem()
+        }
+        if (exploreNum >= 61 && exploreNum <= 100) {
+            pickMonster()
+            fightTime()
         }
     })
 }

@@ -53,7 +53,13 @@
     height: 25px;
     width: 25px;
 }    
+#hover-over {
+    display: none;
+}
 
+.item:hover #hover-over {
+    display: block;
+}
 .game-area {
     text-align: center;
 }

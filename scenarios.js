@@ -62,7 +62,7 @@ function scenario3() {
     })
 }
 //Functions for exploring!
-
+let hutDiscover = -1
 function exploreSwamp() {
     infoArea.textContent = `This is definitely a swamp. Smells like a swamp. Looks like a swamp. You wonder if there are any ogres here.`
 
@@ -71,6 +71,10 @@ function exploreSwamp() {
     while (btns.length) {
         btns[0].remove();
     }
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the Crossroads";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
 
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Look Around";
@@ -82,27 +86,28 @@ function exploreSwamp() {
     swampHermit.id = "swamp-hermit-btn";
     buttonArea.appendChild(swampHermit);
 
-    let continueBtn = document.createElement('button')
-    continueBtn.textContent = "Back to the Crossroads";
-    continueBtn.id = "continue-btn";
-    buttonArea.appendChild(continueBtn);
-
     continueBtn.addEventListener('click', function(){
         explore();
     })
-
-    if (hutDiscover = 1) {
+    
+    if (hutDiscover === 1) {
         swampHermit.style.display = 'block'
     }
+    console.log(hutDiscover, 'hut')
 
-    let hutDiscover = -1
+    swampHermit.addEventListener('click', function(){
+        visitHermit();
+    })
+    
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
-
+        console.log(exploreNum)
         if (hutDiscover === -1 && exploreNum <= 33) {
+            debugger;
+            hutDiscover = 1
             discoverHermit();
-        } else {
+        } else if (hutDiscover === 1) {
             pickMonster();
             fightTime();
         }
@@ -143,6 +148,27 @@ function discoverHermit() {
     
 
 }
+function visitHermit() {
+    infoArea.textContent = `You should come back when you have at least SOMETHING to show the hermit.`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the Swamp";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    continueBtn.addEventListener('click', function(){
+        discoverSwamp();
+    })
+
+
+}
+ let shop = -1
 
 function exploreDesert() {
     infoArea.textContent = `A vast desert appears before you. Sand. It's coarse, and rough, and irritating, and it gets everywhere. Maybe if you look around, you'll find someone? Or you could just look silly wandering the desert alone. No one but the lizards may laugh at you. Beware their teeth.`
@@ -160,11 +186,99 @@ function exploreDesert() {
     continueBtn.textContent = "Back to the Crossroads";
     continueBtn.id = "continue-btn";
     buttonArea.appendChild(continueBtn);
+    let shopDiscover = document.createElement('button')
+    shopDiscover.textContent = "Desert Trader";
+    shopDiscover.id = "shop-btn";
+    buttonArea.appendChild(shopDiscover);
 
     continueBtn.addEventListener('click', function(){
         explore();
     })
+
+    exploreBtn.addEventListener('click', function(){
+        let exploreNum = Math.floor((Math.random() * 100) + 1)
+        console.log(exploreNum)
+        if (shop === -1 && exploreNum <= 33) {
+            shopDiscover.style.display = 'block'
+            shop = 1
+            discoverShop();
+        } else if (shop === 1) {
+            pickMonster();
+            fightTime();
+        }
+        if (exploreNum >= 34 && exploreNum <= 100) {
+            infoArea.textContent = `HEY DONT FORGET TO ADD RANDOM EVENTS AND FIX YOUR START AND INSTRUCTIONS BUTTON`
+        }
+    })
 }
+function discoverShop() {
+    infoArea.textContent = `It feels like you walked for hours through the scorching desert heat. The only signs of life you have seen so far have been tiny lizards and sand fleas. But now? A giant sandworm sits in the sand, squirming as the cloaked tribes people dig their hooks into its carapace folds. As you approach the people, one of the people seems happy to greet you with glowing blue eyes. She explains they have things to trade, if you do in return, including some spices.`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Sorry, not today";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the Crossroads";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    let shopBtn = document.createElement('button')
+    shopBtn.textContent = "Trade";
+    shopBtn.id = "shop-btn";
+    shopBtn.style.display = 'block';
+    buttonArea.appendChild(shopBtn);
+
+    shopBtn.addEventListener('click', function(){
+        shopFunction();
+    })
+
+    continueBtn.addEventListener('click', function(){
+        explore();
+    })
+
+    exploreBtn.addEventListener('click', function(){
+        exploreDesert();
+    })
+}
+
+function shopFunction() {
+
+    infoArea.textContent = `SEE IF YOU CAN FIT ITEMS AND BUTTONS IN HERE MAYBE? `
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Back to the Desert";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the Crossroads";
+    continueBtn.id = "continue-btn";
+
+
+    continueBtn.addEventListener('click', function(){
+        explore();
+    })
+
+    exploreBtn.addEventListener('click', function(){
+        exploreDesert();
+    })
+
+}
+
 function exploreMountain() {
     infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there.`
     let btns = document.querySelector('.button-container').children;
@@ -182,6 +296,7 @@ function exploreMountain() {
     continueBtn.textContent = "Back to the Crossroads";
     continueBtn.id = "continue-btn";
     buttonArea.appendChild(continueBtn);
+    
 
     continueBtn.addEventListener('click', function(){
         explore();

@@ -109,6 +109,12 @@
 #swamp-hermit-btn {
     display: none;
     position: absolute;
-    left: 110px;
+    left: 260px;
+    bottom: 10px;
+}
+#shop-btn {
+    display: none;
+    position: absolute;
+    left: 260px;
     bottom: 10px;
 }

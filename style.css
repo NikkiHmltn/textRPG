@@ -63,6 +63,11 @@
 .game-area {
     text-align: center;
 }
+.sell-me {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
 
 #instructions {
     position: absolute;
@@ -121,6 +126,6 @@
 #shop-btn {
     display: none;
     position: absolute;
-    left: 260px;
+    left: 280px;
     bottom: 10px;
 }

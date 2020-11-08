@@ -255,13 +255,14 @@ function discoverShop() {
 
 function shopFunction() {
 
-    infoArea.textContent = `SEE IF YOU CAN FIT ITEMS AND BUTTONS IN HERE MAYBE? `
-
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
         btns[0].remove();
     }
+
+    infoArea.textContent = " Click the item names that you want to sell! "
+    buttonArea.appendChild(displayShop())
 
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Back to the Desert";
@@ -280,6 +281,24 @@ function shopFunction() {
     exploreBtn.addEventListener('click', function(){
         exploreDesert();
     })
+
+    function displayShop() {
+        for (let i = 0; i < inventorySlot.length; i++) {
+            let invSlot = inventorySlot[i]
+            let itemBtn = document.createElement('button')
+            itemBtn.id = 'sell-me'
+            itemBtn.textContent = invSlot.name
+            buttonArea.appendChild(itemBtn)
+
+            itemBtn.addEventListener('click', function(){
+                player.gold += invSlot.gold
+                console.log(inventorySlot[i].price)
+                debugger;
+                itemBtn.remove()
+                
+            })
+        }
+    } 
 
 }
 

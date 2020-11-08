@@ -14,18 +14,13 @@ console.log(randomItem)
 console.log(currentMonster)
 //change player and fighterClass to a class
 // only one class for now, default class
-let fighterClass = {
-    health: 80,
-    strength: 3,
-    stamina: 40,
-}
 
 //holds player info 
 let player = {
     name: "TBD",
-    health: fighterClass.health,
-    strength: fighterClass.strength,
-    stamina: fighterClass.stamina,
+    health: 80,
+    strength: 3,
+    stamina: 40,
     gold: 0,
     checkHealth() {
         if (player.health <= 0) {
@@ -33,6 +28,8 @@ let player = {
         } 
     }
 }
+
+
 
 class Reset {
     constructor(player) {
@@ -43,6 +40,7 @@ class Reset {
         this.gold = player.gold
     }
 }
+
 function itemIteration() {
     
     let refresh = document.querySelector('.inventory-space').children;
@@ -237,7 +235,7 @@ function explore() {
 
 // //on click it displays instructions
 const displayInstructions = () => {
-    gameArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press Start Game to begin your journey.' 
+    infoArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press Start Game to begin your journey.' 
 }
 
 
@@ -275,8 +273,21 @@ const startGame = () => {
     resetBtn.addEventListener('click', function(){
         infoArea.textContent = " ";
         buttonArea.textContent = " ";
-        resetPlayer = new Reset(fighterClass);
-        console.log(resetPlayer)
+        inventorySlot = []; 
+        player = {
+            name: "TBD",
+            health: 80,
+            strength: 3,
+            stamina: 40,
+            gold: 0,
+            checkHealth() {
+                if (player.health <= 0) {
+                    fallenInBattle();
+                } 
+            }
+        }
+        // resetPlayer = new Reset(player);
+       
     //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')

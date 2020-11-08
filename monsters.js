@@ -30,6 +30,14 @@ let monster = [
 
 ]
 
+let theKing = {
+    name: "The King",
+    health: 60,
+    strength: 3,
+    gold: 100,
+    text: "Have it your way!"
+}
+
 class Monster {
     constructor (info) {
         this.id = info.id
@@ -40,5 +48,3 @@ class Monster {
         this.text = info.text
     }
 }
-
-//make a class for generic monster, plug in monster info on new Monster

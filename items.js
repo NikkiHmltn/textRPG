@@ -43,6 +43,13 @@ let items = [
         image: "imgs/plains-apple.jpeg",
         description: "A plain apple. Or is it a plain's apple?"
 
+    },
+    {
+        id: 07,
+        name: "Purple Drank",
+        price: 40,
+        image: "imgs/purple-potion.jpeg",
+        description: "Sippin' sizzurp in my ride. Like a G6."
     }
 ]
 
@@ -55,4 +62,3 @@ class Items {
         this.description = info.description
     }
 }
-

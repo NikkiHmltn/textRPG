@@ -37,13 +37,14 @@ function scenario2() {
     buttonArea.appendChild(battleBtn)
 
     battleBtn.addEventListener('click', function(){
-        fightTime(currentMonster);
+        pickMonster()
+        fightTime();
     })
 
 
 }
 function scenario3() {
-    infoArea.textContent = `He shakes his head. "What a shame. Anyways, you're probably lookin' for a potion, huh? Well, man... Ya gotta bring me some ingredients back. But be quick about it, I have that competition at sundown." \n Guess there's nothing left here to do. Did the hermit even mention what kind of ingredients he needed back? `
+    infoArea.textContent = `The hermit shakes his head. "Well... You must be the king's new errand kid." He waves his hand dismissively at the idea before disappearing back into his hut. You hear scuffling and banging as he rifles for what you're hoping is your potion. \n It was only after a few short minutes he puts his head out of the window to give you the purple potion in question, you think? "Tell the king that's his last batch" With that, he slams his window shut and you're left with the lavendar potion. You should head back immediately to the king.`
 
     let btns = document.querySelector('.button-container').children;
     
@@ -51,14 +52,94 @@ function scenario3() {
         btns[0].remove();
     }
 
-    let exploreBtn = document.createElement('button')
-    exploreBtn.textContent = "Back to the Swamp";
-    exploreBtn.id = "explore-btn";
-    buttonArea.appendChild(exploreBtn);
+    let potion = items[6]
+    inventorySlot.push(potion)
 
-    exploreBtn.addEventListener('click', function(){
-        exploreSwamp();
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to the King";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    continueBtn.addEventListener('click', function(){
+        questTurnIn();
     })
+    
+}
+function questTurnIn() {
+
+    infoArea.textContent = `It takes a while for you to get back to the king, but his face twists into an erratic smile seeing the purple potion in hand. "Good. You're just in time. Give me the potion."`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let noBtn = document.createElement('button')
+    noBtn.textContent = "What about the princess?";
+    noBtn.id = "no-btn";
+    buttonArea.appendChild(noBtn);
+
+    let yesBtn = document.createElement('button')
+    yesBtn.textContent = "Here you go!"
+    yesBtn.id = "yes-btn";
+    buttonArea.appendChild(yesBtn);
+
+    yesBtn.addEventListener('click', function(){
+        endGame1()
+    });
+    noBtn.addEventListener('click', function(){
+        finalBoss();
+    });
+    // let potion = items[6]
+    // inventorySlot.remove(potion)
+
+    
+
+}
+function finalBoss() {
+    infoArea.textContent = `The king laughs. "You really think there was a princess? Sorry, but your princess must be in another castle. You are a trusting fool." The king pulls his sword from its sheathe. Prepare to fight!`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let battleBtn = document.createElement('button');
+    battleBtn.id = 'battle-btn';
+    battleBtn.textContent = 'Fight!'
+    buttonArea.appendChild(battleBtn)
+
+    battleBtn.addEventListener('click', function(){
+        let playerAttack = Math.floor((Math.random() * player.strength) + 3);
+        let enemyAttack = Math.floor((Math.random() * theKing.strength) +1);
+        theKing.health -= playerAttack,
+        player.health -= enemyAttack,
+        infoArea.innerHTML = `You hit the king for ${playerAttack} damage! <br> The madman hits you for ${enemyAttack} damage. <br> Creature: ${theKing.name} <br> Health: ${theKing.health}`
+        //check to make sure when health is at 0, death occurs for monster or player
+        if (theKing.health <= 0) {
+            infoArea.textContent = `With a final slice of your sword, you fell the king. \n You pick up ${theKing.gold} gold.`,
+            //transfer gold to character upon creature death
+            player.gold += theKing.gold;
+            let btns = document.querySelector('.button-container').children;
+    
+            while (btns.length) {
+            btns[0].remove();
+            }
+            let continueBtn = document.createElement('button')
+            continueBtn.textContent = "Victory";
+            continueBtn.id = "continue-btn";
+            buttonArea.appendChild(continueBtn);
+
+            continueBtn.addEventListener('click', function(){
+                ending1();
+            })
+        }
+        if (player.health <= 0) {
+            fallenInBattle();}
+    })
+
 }
 //Functions for exploring!
 let hutDiscover = -1
@@ -110,8 +191,13 @@ function exploreSwamp() {
             pickMonster();
             fightTime();
         }
-        if (exploreNum >= 34 && exploreNum <= 100) {
-            infoArea.textContent = `HEY DONT FORGET TO ADD RANDOM EVENTS AND FIX YOUR START AND INSTRUCTIONS BUTTON`
+        if (exploreNum >= 34 && exploreNum <= 74) {
+            pickMonster()
+            fightTime()
+        }
+        if (exploreNum >= 75 && exploreNum <= 100) {
+            pickItem()
+            randomItem()
         }
     })
 
@@ -147,8 +233,26 @@ function discoverHermit() {
     
 
 }
+function sillyScenario1() {
+    infoArea.textContent = `The hermit flashes you a large grin. He starts rambling off about the other competitors that are showing up tonight. It really is quite the turnout, you discover. There were all sorts of bearded swamp folk, all men, women, and children alike. It wasn't so much of a competition as it was a really weird jam sesh. You even managed to somehow get away with sounding terrible when placed in front of a dulcimer. You learned it was quite the encouraging and supportive group. Or maybe it was just the swamp root everyone basked in. Either way... What a night!`
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "That went better than expected"
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    continueBtn.addEventListener('click', function(){
+        scenario3();
+    });
+}
 function visitHermit() {
-    infoArea.textContent = `You should come back when you have at least SOMETHING to show the hermit.`
+    infoArea.textContent = `The hermit shakes his head at you. "You broke the game somehow. You really shouldn't be in here yet. Hit the resert button, man."`
 
     let btns = document.querySelector('.button-container').children;
     
@@ -261,7 +365,7 @@ function shopFunction() {
         btns[0].remove();
     }
 
-    infoArea.textContent = " Click the item names that you want to sell! "
+    infoArea.textContent = " Selling and Buying coming soon! "
     buttonArea.appendChild(displayShop())
 
     let exploreBtn = document.createElement('button')
@@ -282,23 +386,23 @@ function shopFunction() {
         exploreDesert();
     })
 
-    function displayShop() {
-        for (let i = 0; i < inventorySlot.length; i++) {
-            let invSlot = inventorySlot[i]
-            let itemBtn = document.createElement('button')
-            itemBtn.id = 'sell-me'
-            itemBtn.textContent = invSlot.name
-            buttonArea.appendChild(itemBtn)
+    // function displayShop() {
+    //     for (let i = 0; i < inventorySlot.length; i++) {
+    //         let invSlot = inventorySlot[i]
+    //         let itemBtn = document.createElement('button')
+    //         itemBtn.id = 'sell-me'
+    //         itemBtn.textContent = invSlot.name
+    //         buttonArea.appendChild(itemBtn)
 
-            itemBtn.addEventListener('click', function(){
-                player.gold += invSlot.gold
-                console.log(inventorySlot[i].price)
-                debugger;
-                itemBtn.remove()
+    //         itemBtn.addEventListener('click', function(){
+    //             player.gold += invSlot.gold
+    //             console.log(inventorySlot[i].price)
+    //             debugger;
+    //             itemBtn.remove()
                 
-            })
-        }
-    } 
+    //         })
+    //     }
+    // } 
 
 }
 
@@ -325,13 +429,45 @@ function exploreMountain() {
         explore();
     })
 }
+//win condition scenes!
+function ending1() {
+    infoArea.textContent = `You assassinated a king over what could have been something as simple as cough medicine, or something far more nefarious. At least you still have your life. That's what really matters at the end of the day, isnt it? \n YOU WIN!! \n Score: ${player.gold}` 
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+
+}
+
+function endGame1() {
+    infoArea.textContent = `You hand the king the potion as he laughs. "Glad you could help me have it my way, Prisoner." This was the final quest after all? Just give him the potion. You can at least leave with your head. Thats the real victory at the end of the day. \n YOU WIN!! \n Score: ${player.gold}` 
+
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+}
 
 //These functions are lose conditions written into the story
 
 function gameOver1 () {
     infoArea.textContent = "You felt more content to sit and wait for your oncoming execution. The king is disappointed in your choice, but you'd never give the bourgeois the satisfaction. You only pray the headsman's axe gives you a clean cut the first time round. \n GAME OVER";
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
 }
 
 function fallenInBattle () {
     infoArea.textContent = `With a final cackle from the creature, you fall to the ground. Outdone by a ${currentMonster.name}... \n GAME OVER`
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
 }

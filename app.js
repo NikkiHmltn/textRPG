@@ -308,9 +308,3 @@ function updatePlayerInfo() {
     playerInfo.style.textAlign = "center";
 }
 setInterval(updatePlayerInfo, 1000 / 60)
-
-
-
-
-
-

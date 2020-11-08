@@ -129,3 +129,10 @@
     left: 280px;
     bottom: 10px;
 }
+
+#trader-btn {
+    display: none;
+    position: absolute;
+    left: 280px;
+    bottom: 10px;
+}

@@ -12,7 +12,7 @@ let monster = [
     {
         id: 02,
         name: "Used Caravan Salesman",
-        health: 20,
+        health: 15,
         strength: 2,
         gold: 10,
         text: "You can fit so many goblins in this caravan, baby!"
@@ -21,7 +21,7 @@ let monster = [
     {
         id: 03,
         name: "Karen",
-        health: 25,
+        health: 20,
         strength: 4,
         gold: 20,
         text: "I want to speak with your supervisor!"

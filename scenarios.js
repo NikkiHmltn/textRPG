@@ -132,6 +132,8 @@ function finalBoss() {
     battleBtn.textContent = 'Fight!'
     buttonArea.appendChild(battleBtn)
 
+    currentMonster = theKing
+
     battleBtn.addEventListener('click', function(){
         let playerAttack = Math.floor((Math.random() * player.strength) + 3);
         let enemyAttack = Math.floor((Math.random() * theKing.strength) +1);
@@ -315,6 +317,10 @@ function exploreDesert() {
     shopDiscover.id = "shop-btn";
     buttonArea.appendChild(shopDiscover);
 
+    if (shop === 1) {
+        shopDiscover.style.display = 'block'
+    }
+
     continueBtn.addEventListener('click', function(){
         explore();
     })
@@ -387,21 +393,13 @@ function shopFunction() {
     }
 
     infoArea.textContent = " Selling and Buying coming soon! "
-    buttonArea.appendChild(displayShop())
+    
 
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Back to the Desert";
     exploreBtn.id = "explore-btn";
+    exploreBtn.style.display = "block"
     buttonArea.appendChild(exploreBtn);
-
-    let continueBtn = document.createElement('button')
-    continueBtn.textContent = "Back to the Crossroads";
-    continueBtn.id = "continue-btn";
-
-
-    continueBtn.addEventListener('click', function(){
-        explore();
-    })
 
     exploreBtn.addEventListener('click', function(){
         exploreDesert();
@@ -426,7 +424,7 @@ function shopFunction() {
     // } 
 
 }
-
+let springs = -1;
 function exploreMountain() {
     infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there.`
     let btns = document.querySelector('.button-container').children;
@@ -444,10 +442,80 @@ function exploreMountain() {
     continueBtn.textContent = "Back to the Crossroads";
     continueBtn.id = "continue-btn";
     buttonArea.appendChild(continueBtn);
+
+    let springsBtn = document.createElement('button')
+    springsBtn.textContent = "Healing Springs";
+    springsBtn.id = "shop-btn";
+    buttonArea.appendChild(springsBtn);
+
+    if (springs === 1) {
+        springsBtn.style.display = 'block'
+    }
+    
+    exploreBtn.addEventListener('click', function(){
+        let exploreNum = Math.floor((Math.random() * 100) + 1)
+        console.log(exploreNum)
+        if (springs === -1 && exploreNum <= 33) {
+            springsBtn.style.display = 'block'
+            springs = 1
+            console.log(springs)
+            discoverSpring();
+        } else if (springs === 1) {
+            pickMonster();
+            fightTime();
+        }
+        if (exploreNum >= 34 && exploreNum <= 60) {
+            pickItem()
+            findItem()
+        }
+        if (exploreNum >= 61 && exploreNum <= 100) {
+            pickMonster()
+            fightTime()
+        }
+    })
+
+    continueBtn.addEventListener('click', function(){
+        explore();
+    })
+}
+function discoverSpring() {
+    let btns = document.querySelector('.button-container').children;
+    
+    while (btns.length) {
+        btns[0].remove();
+    }
+
+    infoArea.textContent = `As you explore through the mountains vast hiking trails, you come across a small hot springs. There doesnt appear to be anyone here, but there is a mandatory donation box and a sign. The sign reads: "Welcome! For a generous donation of 20 gold, you will be allowed to use the healing springs water. Thank you!"`
+
+    let exploreBtn = document.createElement('button')
+    exploreBtn.textContent = "Back to Mountain";
+    exploreBtn.id = "explore-btn";
+    buttonArea.appendChild(exploreBtn);
+
+    let continueBtn = document.createElement('button')
+    continueBtn.textContent = "Back to Crossroads";
+    continueBtn.id = "continue-btn";
+    buttonArea.appendChild(continueBtn);
+
+    let recoverBtn = document.createElement('button')
+    recoverBtn.textContent = "Heal";
+    recoverBtn.id = "shop-btn";
+    recoverBtn.style.display = "block";
+    buttonArea.appendChild(recoverBtn);
+
     
 
     continueBtn.addEventListener('click', function(){
         explore();
+    })
+
+    exploreBtn.addEventListener('click', function(){
+        exploreMountain();
+    })
+
+    recoverBtn.addEventListener('click', function() {
+        player.health = 80
+        player.gold = player.gold - 20
     })
 }
 //win condition scenes!

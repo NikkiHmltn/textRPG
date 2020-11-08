@@ -185,7 +185,6 @@ function explore() {
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
-        console.log(exploreNum)
         if (exploreNum <= 20 && discoverSwamp === -1) {
             swampBtn.style.display = 'block'
             infoArea.textContent = `You discovered the swamp!`
@@ -280,6 +279,7 @@ const startGame = () => {
         discoverMountain = -1;
         hutDiscover = -1
         shop = -1
+        springs = -1
     //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')

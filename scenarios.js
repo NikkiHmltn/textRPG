@@ -1,5 +1,26 @@
 // These functions are for the storyline/path to victory
 
+function beginScene() {
+    infoArea.textContent = `You wake up in a musty, dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
+
+    let noBtn = document.createElement('button')
+    noBtn.textContent = "I'm fine sitting here until I die";
+    noBtn.id = "no-btn";
+    buttonArea.appendChild(noBtn);
+
+    let yesBtn = document.createElement('button')
+    yesBtn.textContent = "Whats the worst that can happen?"
+    yesBtn.id = "yes-btn";
+    buttonArea.appendChild(yesBtn);
+
+    yesBtn.addEventListener('click', function(){
+        scenario1();
+    });
+    noBtn.addEventListener('click', function(){
+        gameOver1();
+    });
+}
+
 function scenario1 () {
     infoArea.textContent = "You hear the click of the door unlocking as the king and his guards greet you at the door. The king explains his daughter, the princess, has fallen ill. He wants you to retrieve a potion from the hermit in the swamp that may be able to save her. He gives you a golden card and instructs you to keep it until after the task is completed. It looks worth a lot. Despite being recently freed, the king swiftly kicks you out of the city and instructs you to get on your way. Good thing the guards gave you back your old weapons.";
 

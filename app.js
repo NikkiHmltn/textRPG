@@ -17,7 +17,7 @@ console.log(currentMonster)
 
 //holds player info 
 let player = {
-    name: "TBD",
+    name: "",
     health: 80,
     strength: 3,
     stamina: 40,
@@ -243,24 +243,12 @@ const displayInstructions = () => {
 //on click it starts the game
 const startGame = () => {
     
-    infoArea.textContent = `You wake up in a musty, dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
+    var person = prompt("Please enter your name", "Player Name");
 
-    let noBtn = document.createElement('button')
-    noBtn.textContent = "I'm fine sitting here until I die";
-    noBtn.id = "no-btn";
-    buttonArea.appendChild(noBtn);
-
-    let yesBtn = document.createElement('button')
-    yesBtn.textContent = "Whats the worst that can happen?"
-    yesBtn.id = "yes-btn";
-    buttonArea.appendChild(yesBtn);
-
-    yesBtn.addEventListener('click', function(){
-        scenario1();
-    });
-    noBtn.addEventListener('click', function(){
-        gameOver1();
-    });
+    if (person != null) {
+        player.name = person
+        beginScene()
+    }
     
     startButton.style.display = 'none';
 
@@ -287,7 +275,11 @@ const startGame = () => {
             }
         }
         // resetPlayer = new Reset(player);
-       
+        discoverSwamp = -1;
+        discoverDesert = -1;
+        discoverMountain = -1;
+        hutDiscover = -1
+        shop = -1
     //remove hidden properties
         if (startButton.style.display === 'none') {
             (startButton.style.display = 'block')

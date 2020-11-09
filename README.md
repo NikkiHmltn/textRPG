@@ -58,7 +58,11 @@ function itemIteration() {
 ## Development
 My super simple wireframe for my placement ideas: 
 ![Image of my wireframe]
-(imgs/aww-board.png)
+(https://i.ibb.co/cLhdVZV/aww-board.png)
+
+A screenshot of the beginning of the game: 
+![Beginning Screenshot]
+(https://i.ibb.co/1Mj4wr8/Screen-Shot-2020-11-09-at-12-32-59-PM.png)
 
 
 TO DO List: 

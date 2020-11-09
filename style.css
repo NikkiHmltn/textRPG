@@ -57,7 +57,12 @@ h1 {
     height: 200px;
     width: 300px;
 }
-
+.inventory-label {
+    text-align: center;
+    width: 100%;
+    color: rgba(59, 44, 23, 0.863);
+    font-family: "eightbitdragon"
+}
 .inventory-space {
     border: 2px solid rgba(59, 44, 23, 0.863);
     border-radius: 8px;

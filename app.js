@@ -40,17 +40,19 @@ class Reset {
         this.gold = player.gold
     }
 }
-let invLabel = document.querySelector(".inventory-space")
-    invLabel.createElement('p')
-    invLabel.textContent = "Inventory";
-    inventorySpace.appendChild(invLabel)
+    
+    
+    // inventorySpace.appendChild(invLabel)
 
 function itemIteration() {
     let refresh = document.querySelector('.inventory-space').children;
     while (refresh.length) {
     refresh[0].remove();
     }
-    
+    let invL = document.createElement('div')
+    invL.classList.add('inventory-label')
+    invL.textContent = "Inventory";
+    inventorySpace.appendChild(invL)
 
     for(let i = 0; i < inventorySlot.length; i++) {
         let item = inventorySlot[i];

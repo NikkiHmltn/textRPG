@@ -1,6 +1,6 @@
 # textRPG
 
-textRPG is a simplistic text RPG game where the player must navigate through silly scenarios and enemies to beat the game. I enjoyed playing text rpgs growing up, and they are still a guilty pleasure to this day. This project is still in progress and updates will be slow for the moment. I have only been coding for 3 weeks, so that is why React, Node.js, or anything other than vanilla JS, HTML, and CSS were used.
+textRPG is a simplistic text RPG game where the player must navigate through silly scenarios and enemies to beat the game. I enjoyed playing text rpgs growing up, and they are still a guilty pleasure to this day. This project is still in progress and updates will be slow for the moment. I have only been coding for 3 weeks, so that is why React, Node.js, or anything other than vanilla JS, HTML, and CSS were not used.
 
 This project is for my General Assembly bootcamp. Here are the list of requirements needing to be met:
 ```
@@ -57,9 +57,9 @@ function itemIteration() {
 ```
 ## Development
 My super simple wireframe for my placement ideas: 
-```
-imgs/aww-board.png
-```
+![Image of my wireframe]
+(imgs/aww-board.png)
+
 
 TO DO List: 
 - Add a shop for buying and selling items

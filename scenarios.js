@@ -472,7 +472,7 @@ function exploreMountain() {
     gameTextColor.style.borderColor = "LightSlateGrey";
     gameTextColor.style.color = "DarkSlateGrey";
 
-    infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there.`
+    infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there. There were also rumors about a secret healing springs somewhere in the mountains.`
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {

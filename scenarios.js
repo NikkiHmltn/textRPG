@@ -477,6 +477,10 @@ function exploreMountain() {
     continueBtn.addEventListener('click', function(){
         explore();
     })
+
+    springsBtn.addEventListener('click', function(){
+        discoverSpring();
+    })
 }
 function discoverSpring() {
     let btns = document.querySelector('.button-container').children;

@@ -1,5 +1,21 @@
+body {
+    background-image: url("imgs/texturebackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top 100px;
+}
+
+@font-face {
+    font-family: "eightbitdragon";
+    src: url("imgs/eight-bit-dragon-font/EightBitDragon-anqx.ttf");
+}
+
+h1 {
+    text-align: center;
+    color: rgba(59, 44, 23, 0.863);
+    font-family: "eightbitdragon";
+}
 .container {
-    border: 2px solid black;
     position: fixed;
     top: 10%;
     left: 20%;
@@ -8,7 +24,7 @@
 }
 
 .game-area {
-    border: 2px solid black;
+    border: 2px solid rgba(59, 44, 23, 0.863);
     border-radius: 8px;
     margin: 10px;
     padding: 10px;
@@ -16,6 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Helvetica, Arial, sans-serif;
+    color: rgba(24, 18, 9, 0.863);
     
 }
 .bottom-area {
@@ -25,7 +43,9 @@
 }
 
 .player-info {
-    border: 2px solid black;
+    font-family: "eightbitdragon";
+    color: rgba(59, 44, 23, 0.863);
+    border: 2px solid rgba(59, 44, 23, 0.863);
     border-radius: 8px;
     margin: 10px;
     padding: 10px;
@@ -34,7 +54,7 @@
 }
 
 .inventory-space {
-    border: 2px solid black;
+    border: 2px solid rgba(59, 44, 23, 0.863);
     border-radius: 8px;
     margin: 10px;
     padding: 10px;
@@ -47,7 +67,7 @@
 }
 
 .item {
-    border: 1px solid black;
+    border: 1px solid rgba(59, 44, 23, 0.863);
     margin: 15px;
     padding: 5px; 
     height: 25px;

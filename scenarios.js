@@ -1,6 +1,12 @@
 // These functions are for the storyline/path to victory
+let backImage = document.querySelector(".image-background");
+let gameTextColor = document.querySelector(".game-area")
 
 function beginScene() {
+    backImage.style.backgroundImage = "url('imgs/prisoncell.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `You wake up in a musty, dark prison cell. There is little light coming through the slotted bars in the cell door, but you can hear a few footsteps approaching. A deep voice beckons you from the other side. "Prisoner, I have a task for you to complete. If you accept and complete it successfully, I will pardon all your crimes. Fail and its back to the chopping block, do you agree?" Well, do you accept?`
 
     let noBtn = document.createElement('button')
@@ -22,6 +28,10 @@ function beginScene() {
 }
 
 function scenario1 () {
+    backImage.style.backgroundImage = "url('imgs/prisoncell.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = "You hear the click of the door unlocking as the king and his guards greet you at the door. The king explains his daughter, the princess, has fallen ill. He wants you to retrieve a potion from the hermit in the swamp that may be able to save her. He gives you a golden card and instructs you to keep it until after the task is completed. It looks worth a lot. Despite being recently freed, the king swiftly kicks you out of the city and instructs you to get on your way. Good thing the guards gave you back your old weapons.";
 
     let btns = document.querySelector('.button-container').children;
@@ -44,6 +54,10 @@ function scenario1 () {
 };
 
 function scenario2() {
+    backImage.style.backgroundImage = "url('imgs/crossroads.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "black";
+
     infoArea.textContent = `As you venture further away from the township, you come to a standstill at a crossroads. Several paths appear before you, but there is no markings of where you are or where they lead. As you ponder your next move, a voice comes up behind you. \n "${currentMonster.text}" \n They don't look like they want to have a friendly chat. Draw your sword!`
 
     let btns = document.querySelector('.button-container').children;
@@ -65,6 +79,10 @@ function scenario2() {
 
 }
 function scenario3() {
+    backImage.style.backgroundImage = "url('imgs/swamp.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `The hermit shakes his head. "Well... You must be the king's new errand kid." He waves his hand dismissively at the idea before disappearing back into his hut. You hear scuffling and banging as he rifles for what you're hoping is your potion. \n It was only after a few short minutes he puts his head out of the window to give you the purple potion in question, you think? "Tell the king that's his last batch" With that, he slams his window shut and you're left with the lavendar potion. You should head back immediately to the king.`
 
     let btns = document.querySelector('.button-container').children;
@@ -167,6 +185,10 @@ function finalBoss() {
 //Functions for exploring!
 let hutDiscover = -1
 function exploreSwamp() {
+    backImage.style.backgroundImage = "url('imgs/swamp.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `This is definitely a swamp. Smells like a swamp. Looks like a swamp. You wonder if there are any ogres here.`
 
     let btns = document.querySelector('.button-container').children;
@@ -228,6 +250,9 @@ function exploreSwamp() {
 }
 
 function discoverHermit() {
+    backImage.style.backgroundImage = "url('imgs/swamp.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
 
     infoArea.textContent = `You spy a crooked, earthen hut. The roof is covered in some type of grass, and a small chinmey of smoke billows out from the back. Someone appears to be inside. It was almost hard to miss next to the crooked trees. As you approach the hut, you can hear the sound of a strange zither-like harmony coming from inside. It stops the second you raise your fist to knock on the door. \n "In a second, man!" \n A very bushy bearded old man pokes his head out of the window, gesturing for you to come closer. \n "Hey, are you here for the Tuesday night dulcimer competition?"`
 
@@ -257,6 +282,10 @@ function discoverHermit() {
 
 }
 function sillyScenario1() {
+    backImage.style.backgroundImage = "url('imgs/swamp.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `The hermit flashes you a large grin. He starts rambling off about the other competitors that are showing up tonight. It really is quite the turnout, you discover. There were all sorts of bearded swamp folk, all men, women, and children alike. It wasn't so much of a competition as it was a really weird jam sesh. You even managed to somehow get away with sounding terrible when placed in front of a dulcimer. You learned it was quite the encouraging and supportive group. Or maybe it was just the swamp root everyone basked in. Either way... What a night!`
 
     let btns = document.querySelector('.button-container').children;
@@ -275,6 +304,10 @@ function sillyScenario1() {
     });
 }
 function visitHermit() {
+    backImage.style.backgroundImage = "url('imgs/swamp.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `The hermit shakes his head at you. "You broke the game somehow. You really shouldn't be in here yet. Hit the resert button, man."`
 
     let btns = document.querySelector('.button-container').children;
@@ -297,6 +330,10 @@ function visitHermit() {
  let shop = -1
 
 function exploreDesert() {
+    backImage.style.backgroundImage = "url('imgs/desertfit.PNG')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `A vast desert appears before you. Sand. It's coarse, and rough, and irritating, and it gets everywhere. Maybe if you look around, you'll find someone? Or you could just look silly wandering the desert alone. No one but the lizards may laugh at you. Beware their teeth.`
 
     let btns = document.querySelector('.button-container').children;
@@ -385,6 +422,9 @@ function discoverShop() {
 }
 
 function shopFunction() {
+    backImage.style.backgroundImage = "url('imgs/desertfit.PNG')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
 
     let btns = document.querySelector('.button-container').children;
     
@@ -426,6 +466,10 @@ function shopFunction() {
 }
 let springs = -1;
 function exploreMountain() {
+    backImage.style.backgroundImage = "url('imgs/mountains.png')";
+    gameTextColor.style.borderColor = "LightSlateGrey";
+    gameTextColor.style.color = "DarkSlateGrey";
+
     infoArea.textContent = `Tall, jagged spires jut up from the Earth to form these majestic peaks covered in light snow. How many years did it take to form each rock until this hill became a mountain? ... It's probably fake. You should climb to the top to see if the world looks round or flat from there.`
     let btns = document.querySelector('.button-container').children;
     
@@ -548,6 +592,10 @@ function endGame1() {
 //These functions are lose conditions written into the story
 
 function gameOver1 () {
+    backImage.style.backgroundImage = "url('imgs/prisoncell.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = "You felt more content to sit and wait for your oncoming execution. The king is disappointed in your choice, but you'd never give the bourgeois the satisfaction. You only pray the headsman's axe gives you a clean cut the first time round. \n GAME OVER";
     let btns = document.querySelector('.button-container').children;
     

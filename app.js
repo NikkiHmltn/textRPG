@@ -97,6 +97,7 @@ function findItem() {
 
 function fightTime() {
     
+    
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
@@ -146,6 +147,9 @@ function fightTime() {
     let discoverMountain = -1;
 
 function explore() {
+    backImage.style.backgroundImage = "url('imgs/crossroads.png')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "black";
 
     infoArea.textContent = `You arrive back at the crossroads. You see a few paths before you. Why don't you try to take a look around to see what you can find?`
 

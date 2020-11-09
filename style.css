@@ -22,7 +22,11 @@ h1 {
     height: 600px;
     width: 800px;
 }
-
+.image-background {
+    border-radius: 8px;
+    margin: 10px;
+    padding: 10px;
+}
 .game-area {
     border: 2px solid rgba(59, 44, 23, 0.863);
     border-radius: 8px;
@@ -34,6 +38,7 @@ h1 {
     align-items: center;
     font-family: Helvetica, Arial, sans-serif;
     color: rgba(24, 18, 9, 0.863);
+    
     
 }
 .bottom-area {

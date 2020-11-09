@@ -1,6 +1,6 @@
 # textRPG
 
-textRPG is a simplistic text RPG game where the player must navigate through silly scenarios and enemies to beat the game.
+textRPG is a simplistic text RPG game where the player must navigate through silly scenarios and enemies to beat the game. I enjoyed playing text rpgs growing up, and they are still a guilty pleasure to this day. This project is still in progress and updates will be slow for the moment. 
 
 ## Installation
 
@@ -36,6 +36,17 @@ function itemIteration() {
     }
 }
 ```
+## Development
+My super simple wireframe for my placement ideas: 
+```
+imgs/aww-board.png
+```
+
+TO DO List: 
+- Add a shop for buying and selling items
+- Random scenarios
+- More places and situation to explore and get into
+- Player and NPC icons
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. 

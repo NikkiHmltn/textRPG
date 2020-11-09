@@ -105,6 +105,9 @@ function scenario3() {
     
 }
 function questTurnIn() {
+    backImage.style.backgroundImage = "url('imgs/throneroom.jpg')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
 
     infoArea.textContent = `It takes a while for you to get back to the king, but his face twists into an erratic smile seeing the purple potion in hand. "Good. You're just in time. Give me the potion."`
 
@@ -130,13 +133,12 @@ function questTurnIn() {
     noBtn.addEventListener('click', function(){
         finalBoss();
     });
-    // let potion = items[6]
-    // inventorySlot.remove(potion)
-
-    
-
 }
 function finalBoss() {
+    backImage.style.backgroundImage = "url('imgs/throneroom.jpg')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `The king laughs. "You really think there was a princess? Sorry, but your princess must be in another castle. You are a trusting fool." The king pulls his sword from its sheathe. Prepare to fight!`
 
     let btns = document.querySelector('.button-container').children;
@@ -568,6 +570,10 @@ function discoverSpring() {
 }
 //win condition scenes!
 function ending1() {
+    backImage.style.backgroundImage = "url('imgs/throneroom.jpg')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `You assassinated a king over what could have been something as simple as cough medicine, or something far more nefarious. At least you still have your life. That's what really matters at the end of the day, isnt it? \n YOU WIN!! \n Score: ${player.gold}` 
 
     let btns = document.querySelector('.button-container').children;
@@ -580,7 +586,14 @@ function ending1() {
 }
 
 function endGame1() {
+    backImage.style.backgroundImage = "url('imgs/throneroom.jpg')";
+    gameTextColor.style.borderColor = "white";
+    gameTextColor.style.color = "white";
+
     infoArea.textContent = `You hand the king the potion as he laughs. "Glad you could help me have it my way, Prisoner." This was the final quest after all? Just give him the potion. You can at least leave with your head. Thats the real victory at the end of the day. \n YOU WIN!! \n Score: ${player.gold}` 
+
+    let potion = items[6]
+    inventorySlot.remove(potion)
 
     let btns = document.querySelector('.button-container').children;
     

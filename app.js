@@ -42,12 +42,11 @@ class Reset {
 }
 
 function itemIteration() {
-    
     let refresh = document.querySelector('.inventory-space').children;
     while (refresh.length) {
     refresh[0].remove();
     }
-    
+
     for(let i = 0; i < inventorySlot.length; i++) {
         let item = inventorySlot[i];
         let itemPic = document.createElement('img')
@@ -238,7 +237,7 @@ function explore() {
 
 // //on click it displays instructions
 const displayInstructions = () => {
-    infoArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press Start Game to begin your journey.' 
+    infoArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press "Start Game" to begin your journey.' 
 }
 
 

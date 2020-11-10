@@ -10,8 +10,6 @@ let inventorySlot = [];
 let currentMonster 
 let randomItem
 
-console.log(randomItem)
-console.log(currentMonster)
 //change player and fighterClass to a class
 // only one class for now, default class
 
@@ -29,8 +27,6 @@ let player = {
     }
 }
 
-
-
 class Reset {
     constructor(player) {
         this.name = player.name
@@ -40,9 +36,6 @@ class Reset {
         this.gold = player.gold
     }
 }
-    
-    
-    // inventorySpace.appendChild(invLabel)
 
 function itemIteration() {
     let refresh = document.querySelector('.inventory-space').children;
@@ -103,7 +96,6 @@ function findItem() {
 
 function fightTime() {
     
-    
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
@@ -128,24 +120,22 @@ function fightTime() {
             player.gold += currentMonster.gold;
             let btns = document.querySelector('.button-container').children;
     
-                while (btns.length) {
-                btns[0].remove();
-                }
-                let continueBtn = document.createElement('button')
-                continueBtn.textContent = "Back to the Crossroads";
-                continueBtn.id = "continue-btn";
-                buttonArea.appendChild(continueBtn);
+            while (btns.length) {
+            btns[0].remove();
+            }
+            let continueBtn = document.createElement('button')
+            continueBtn.textContent = "Back to the Crossroads";
+            continueBtn.id = "continue-btn";
+            buttonArea.appendChild(continueBtn);
 
-                continueBtn.addEventListener('click', function(){
-                    explore();
-                })
+            continueBtn.addEventListener('click', function(){
+                explore();
+            })
         }
         if (player.health <= 0) {
             fallenInBattle();
         }
     })
-
-
 }
 
     let discoverSwamp = -1;
@@ -192,7 +182,6 @@ function explore() {
         mountainBtn.style.display = 'block'
     }
 
-
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
         if (exploreNum <= 20 && discoverSwamp === -1) {
@@ -237,17 +226,12 @@ function explore() {
     mountainBtn.addEventListener('click', function(){
         exploreMountain();
     })
-
-    
-    
 }
 
 // //on click it displays instructions
 const displayInstructions = () => {
     infoArea.textContent = 'Click to explore, fight monsters, and save your head from the chopping block! \n Press "Start Game" to begin your journey.' 
 }
-
-
 
 //on click it starts the game
 const startGame = () => {
@@ -297,8 +281,6 @@ const startGame = () => {
         if (resetBtn.style.display === 'block') {
             (resetBtn.style.display = 'none')
         }
-        
-        
     })
 };
 startButton.addEventListener('click', startGame);

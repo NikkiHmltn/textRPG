@@ -75,8 +75,6 @@ function scenario2() {
         pickMonster()
         fightTime();
     })
-
-
 }
 function scenario3() {
     backImage.style.backgroundImage = "url('imgs/swamp.png')";
@@ -225,7 +223,6 @@ function exploreSwamp() {
     swampHermit.addEventListener('click', function(){
         visitHermit();
     })
-    
 
     exploreBtn.addEventListener('click', function(){
         let exploreNum = Math.floor((Math.random() * 100) + 1)
@@ -247,8 +244,6 @@ function exploreSwamp() {
             randomItem()
         }
     })
-
-
 }
 
 function discoverHermit() {
@@ -436,7 +431,6 @@ function shopFunction() {
 
     infoArea.textContent = " Selling and Buying coming soon! "
     
-
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Back to the Desert";
     exploreBtn.id = "explore-btn";
@@ -553,8 +547,6 @@ function discoverSpring() {
     recoverBtn.style.display = "block";
     buttonArea.appendChild(recoverBtn);
 
-    
-
     continueBtn.addEventListener('click', function(){
         explore();
     })
@@ -580,9 +572,6 @@ function ending1() {
         btns[0].remove();
     }
     infoArea.textContent = `You assassinated a king over what could have been something as simple as cough medicine, or something far more nefarious. At least you still have your life. That's what really matters at the end of the day, isnt it? \n YOU WIN!! \n Score: ${player.gold}` 
-
-    
-
 
 }
 

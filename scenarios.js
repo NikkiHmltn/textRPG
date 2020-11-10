@@ -574,13 +574,14 @@ function ending1() {
     gameTextColor.style.borderColor = "white";
     gameTextColor.style.color = "white";
 
-    infoArea.textContent = `You assassinated a king over what could have been something as simple as cough medicine, or something far more nefarious. At least you still have your life. That's what really matters at the end of the day, isnt it? \n YOU WIN!! \n Score: ${player.gold}` 
-
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
         btns[0].remove();
     }
+    infoArea.textContent = `You assassinated a king over what could have been something as simple as cough medicine, or something far more nefarious. At least you still have your life. That's what really matters at the end of the day, isnt it? \n YOU WIN!! \n Score: ${player.gold}` 
+
+    
 
 
 }
@@ -589,17 +590,17 @@ function endGame1() {
     backImage.style.backgroundImage = "url('imgs/throneroom.jpg')";
     gameTextColor.style.borderColor = "white";
     gameTextColor.style.color = "white";
-
-    infoArea.textContent = `You hand the king the potion as he laughs. "Glad you could help me have it my way, Prisoner." This was the final quest after all? Just give him the potion. You can at least leave with your head. Thats the real victory at the end of the day. \n YOU WIN!! \n Score: ${player.gold}` 
-
-    let potion = items[6]
-    inventorySlot.remove(potion)
-
     let btns = document.querySelector('.button-container').children;
     
     while (btns.length) {
         btns[0].remove();
     }
+    infoArea.textContent = `You hand the king the potion as he laughs. "Glad you could help me have it my way, Prisoner." This was the final quest after all? Just give him the potion. You can at least leave with your head. Thats the real victory at the end of the day. \n YOU WIN!! \n Score: ${player.gold}` 
+
+    let potion = items[6]
+    inventorySlot.remove(potion)
+
+    
 }
 
 //These functions are lose conditions written into the story

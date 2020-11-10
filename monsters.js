@@ -25,6 +25,38 @@ let monster = [
         strength: 4,
         gold: 20,
         text: "I want to speak with your supervisor!"
+    },
+    {
+        id: 04,
+        name: "Tom from Myspace",
+        health: 15,
+        strength: 4,
+        gold: 15,
+        text: "Welcome to Myspace!"
+    },
+    {
+        id: 05,
+        name: "Pikachu",
+        health: 20,
+        strength: 5,
+        gold: 20,
+        text: "Pikachu!"
+    },
+    {
+        id: 06,
+        name: "Pavlov's Dog",
+        health: 15,
+        strength: 5, 
+        gold: 25,
+        text: "Do you hear a bell ringing?"
+    },
+    {
+        id: 07,
+        name: "Schrödinger's Cat",
+        health: 10,
+        strength: 2,
+        gold: 15,
+        text: "If I fits, I sits. ... Or do I?"
     }
 
 

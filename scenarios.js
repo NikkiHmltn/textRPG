@@ -72,7 +72,6 @@ function scenario2() {
     buttonArea.appendChild(battleBtn)
 
     battleBtn.addEventListener('click', function(){
-        pickMonster()
         fightTime();
     })
 }

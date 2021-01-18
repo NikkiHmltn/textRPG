@@ -428,7 +428,7 @@ function shopFunction() {
         btns[0].remove();
     }
 
-    infoArea.textContent = " Selling and Buying coming soon! "
+    displayShop()
     
     let exploreBtn = document.createElement('button')
     exploreBtn.textContent = "Back to the Desert";
@@ -440,23 +440,29 @@ function shopFunction() {
         exploreDesert();
     })
 
-    // function displayShop() {
-    //     for (let i = 0; i < inventorySlot.length; i++) {
-    //         let invSlot = inventorySlot[i]
-    //         let itemBtn = document.createElement('button')
-    //         itemBtn.id = 'sell-me'
-    //         itemBtn.textContent = invSlot.name
-    //         buttonArea.appendChild(itemBtn)
+    function displayShop() {
+        for (let i = 0; i < inventorySlot.length; i++) {
+            let invSlot = inventorySlot[i]
+            let itemBtn = document.createElement('button')
+            itemBtn.id = 'sell-me'
+            itemBtn.textContent = invSlot.name
+            buttonArea.appendChild(itemBtn)
 
-    //         itemBtn.addEventListener('click', function(){
-    //             player.gold += invSlot.gold
-    //             console.log(inventorySlot[i].price)
-    //             debugger;
-    //             itemBtn.remove()
+        
+
+            itemBtn.addEventListener('click', function(){
+                player.gold += invSlot.price
+                console.log(inventorySlot[i].price)
+                itemBtn.remove()
+
+                for (let j = 0; j < inventorySlot.length; j++) {
+                    if(inventorySlot[j].id == invSlot.id)
+                        inventorySlot.splice(j,1)
+                } 
                 
-    //         })
-    //     }
-    // } 
+            })
+        }
+    } 
 
 }
 let springs = -1;
